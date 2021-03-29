@@ -1,3 +1,4 @@
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -9,6 +10,9 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Persistence;
+using Reactivities.API.Extensions;
+using Reactivities.Application.Activities;
+using Reactivities.Application.Core;
 using Reactivities.Persistence;
 using System;
 using System.Collections.Generic;
@@ -19,9 +23,11 @@ namespace ReactivitiesAPI
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly IConfiguration _config;
+
+        public Startup(IConfiguration config)
         {
-            Configuration = configuration;
+            _config = config;
         }
 
         public IConfiguration Configuration { get; }
@@ -31,13 +37,7 @@ namespace ReactivitiesAPI
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ReactivitiesAPI", Version = "v1" });
-            });
-
-            services.AddDbContext<ReactivitiesDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddApplicationServices(_config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +53,8 @@ namespace ReactivitiesAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
 

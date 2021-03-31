@@ -77,7 +77,7 @@ stages:
             displayName: azure app service deploy
             inputs:
               ConnectionType: 'AzureRM'
-              azureSubscription: 'ReactivitiesAPI (688498bb-c7be-4fb1-8c94-f2f16c9f40ff)'
+              azureSubscription: 'ReactivitiesAPI'
               appType: 'webApp'
               WebAppName: 'ReactivitiesAPI'
               packageForLinux: '$(Pipeline.Workspace)/app'

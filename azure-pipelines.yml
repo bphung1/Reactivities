@@ -72,3 +72,12 @@ stages:
           - download: current
             artifact: app
             displayName: artifact download app
+    
+          - task: AzureRmWebAppDeployment@4
+            displayName: azure app service deploy
+            inputs:
+              ConnectionType: 'AzureRM'
+              azureSubscription: 'Azure subscription 1(688498bb-c7be-4fb1-8c94-f2f16c9f40ff)'
+              appType: 'webApp'
+              WebAppName: 'ReactivitiesAPI'
+              packageForLinux: '$(Pipeline.Workspace)/app'

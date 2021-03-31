@@ -7,7 +7,7 @@ pr:
 variables:
   solutionPath: Reactivities.API
   buildConfiguration: 'Release'
-  sdkVersion: 3.1.x
+  sdkVersion: 5.0.x
   startupProjectPath: Reactivities.API
 
 stages: 

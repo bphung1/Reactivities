@@ -79,5 +79,5 @@ stages:
               ConnectionType: 'AzureRM'
               azureSubscription: 'ReactivitiesAPI'
               appType: 'webApp'
-              WebAppName: 'Reactivities.API'
+              WebAppName: 'ReactivitiesAPI20210331163227'
               packageForLinux: '$(Pipeline.Workspace)/app'

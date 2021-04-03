@@ -52,7 +52,7 @@ stages:
       displayName: artifact publish app
 
 - stage: deploy
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/main'))
   dependsOn:
   - build
   pool:
@@ -79,5 +79,5 @@ stages:
               ConnectionType: 'AzureRM'
               azureSubscription: 'ReactivitiesAPI'
               appType: 'webApp'
-              WebAppName: 'Reactivities.API'
+              WebAppName: 'ReactivitiesAPI'
               packageForLinux: '$(Pipeline.Workspace)/app'

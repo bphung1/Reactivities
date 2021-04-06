@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Reactivities.Domain;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Text;
 
 namespace Reactivities.Persistence
 {
-    public class ReactivitiesDbContext : DbContext
+    public class ReactivitiesDbContext : IdentityDbContext<AppUser>
     {
         public ReactivitiesDbContext(DbContextOptions options) : base(options)
         {

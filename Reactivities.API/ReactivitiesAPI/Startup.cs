@@ -1,6 +1,9 @@
 using FluentValidation.AspNetCore;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -8,6 +11,7 @@ using Persistence;
 using Reactivities.API.Extensions;
 using Reactivities.API.Middleware;
 using Reactivities.Application.Activities;
+using Reactivities.Domain;
 using Reactivities.Persistence;
 
 namespace ReactivitiesAPI
@@ -27,15 +31,21 @@ namespace ReactivitiesAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers().AddFluentValidation(config =>
+            services.AddControllers(opt =>
+            {
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                opt.Filters.Add(new AuthorizeFilter(policy));
+            })
+                .AddFluentValidation(config =>
             {
                 config.RegisterValidatorsFromAssemblyContaining<Create>();
             });
             services.AddApplicationServices(_config);
+            services.AddIdentityServices(_config);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ReactivitiesDbContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ReactivitiesDbContext context, UserManager<AppUser> userManager)
         {
             //custom exception handling middleware
             app.UseMiddleware<ExceptionMiddleware>();
@@ -52,9 +62,10 @@ namespace ReactivitiesAPI
 
             app.UseCors("CorsPolicy");
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
-            DataSeeding.SeedData(context).Wait();
+            DataSeeding.SeedData(context, userManager).Wait();
 
             app.UseEndpoints(endpoints =>
             {

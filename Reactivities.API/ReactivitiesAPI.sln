@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactivities.API", "ReactivitiesAPI\Reactivities.API.csproj", "{28F66395-6687-46C9-87DE-5E46A4ED7C12}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reactivities.API", "ReactivitiesAPI\Reactivities.API.csproj", "{28F66395-6687-46C9-87DE-5E46A4ED7C12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactivities.Persistence", "Reactivities.Persistence\Reactivities.Persistence.csproj", "{1D235B79-52F8-4839-BA48-B701A1DE0A82}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reactivities.Persistence", "Reactivities.Persistence\Reactivities.Persistence.csproj", "{1D235B79-52F8-4839-BA48-B701A1DE0A82}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactivities.Domain", "Reactivities.Domain\Reactivities.Domain.csproj", "{F0AC72BA-0CC1-4992-89B3-FD760CFC5D01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reactivities.Domain", "Reactivities.Domain\Reactivities.Domain.csproj", "{F0AC72BA-0CC1-4992-89B3-FD760CFC5D01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactivities.Application", "Reactivities.Application\Reactivities.Application.csproj", "{DE1CF58A-9CEB-4D6C-A64C-8A968E063F0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reactivities.Application", "Reactivities.Application\Reactivities.Application.csproj", "{DE1CF58A-9CEB-4D6C-A64C-8A968E063F0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reactivities.Infrastructure", "Reactivities.Infrastructure\Reactivities.Infrastructure.csproj", "{8A5C3A3C-68CE-4633-A853-15FFFF25D4BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DE1CF58A-9CEB-4D6C-A64C-8A968E063F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE1CF58A-9CEB-4D6C-A64C-8A968E063F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE1CF58A-9CEB-4D6C-A64C-8A968E063F0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A5C3A3C-68CE-4633-A853-15FFFF25D4BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A5C3A3C-68CE-4633-A853-15FFFF25D4BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A5C3A3C-68CE-4633-A853-15FFFF25D4BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A5C3A3C-68CE-4633-A853-15FFFF25D4BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

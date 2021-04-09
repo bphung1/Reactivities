@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Persistence;
 using Reactivities.API.Extensions;
 using Reactivities.API.Middleware;
 using Reactivities.Application.Activities;

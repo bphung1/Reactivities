@@ -1,11 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Reactivities.Domain;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Reactivities.Persistence
 {
@@ -19,6 +14,9 @@ namespace Reactivities.Persistence
         public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Comment> Comments { get; set; }
+        public DbSet<UserFollowing> UserFollowings { get; set; }
+        //public DbSet<Following> Followings { get; set; }
+        //public DbSet<Follower> Followers { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -40,6 +38,42 @@ namespace Reactivities.Persistence
                 .HasOne(a => a.Activity)
                 .WithMany(c => c.Comments)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            //builder.Entity<Following>(b =>
+            //{
+            //    b.HasKey(k => new { k.ObserverId });
+
+            //    b.HasOne(o => o.Observer)
+            //        .WithMany(f => f.Followings)
+            //        .HasForeignKey(o => o.ObserverId)
+            //        .OnDelete(DeleteBehavior.Cascade);
+            //});
+
+            //builder.Entity<Follower>(b =>
+            //{
+            //    b.HasKey(k => new { k.TargetId });
+
+            //    b.HasOne(o => o.Target)
+            //        .WithMany(f => f.Followers)
+            //        .HasForeignKey(o => o.TargetId)
+            //        .OnDelete(DeleteBehavior.Cascade);
+            //});
+
+            builder.Entity<UserFollowing>(b =>
+            {
+                b.HasKey(k => new { k.ObserverId, k.TargetId });
+
+                b.HasOne(o => o.Observer)
+                    .WithMany(f => f.Followings)
+                    .HasForeignKey(o => o.ObserverId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                b.HasOne(o => o.Target)
+                    .WithMany(f => f.Followers)
+                    .HasForeignKey(o => o.TargetId)
+                    .OnDelete(DeleteBehavior.NoAction);
+
+            });
         }
     }
 }

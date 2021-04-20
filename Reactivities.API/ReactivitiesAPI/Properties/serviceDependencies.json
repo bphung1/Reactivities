@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "apis1": {
+      "type": "apis"
+<<<<<<< HEAD
+    },
+    "mssql1": {
+      "type": "mssql",
+      "connectionId": "paycompute.database.windows.net"
+    },
+    "signalr1": {
+      "type": "signalr",
+      "connectionId": "Azure__SignalR__ConnectionString"
+    },
+    "secrets1": {
+      "type": "secrets",
+      "connectionId": "VaultUri"
+=======
+>>>>>>> parent of fd3b247 (fix bugs)
+    }
+  }
+}
